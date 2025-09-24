@@ -5,4 +5,5 @@ import reactor.core.publisher.Mono;
 
 public interface ApprovedApplicationsRepository {
     Mono<ApprovedApplications> readReport();
+    Mono<Void> updateReport(Long amountApproved);
 }
