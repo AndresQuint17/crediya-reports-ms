@@ -1,9 +1,11 @@
 package co.com.crediya.reports.dynamodb;
 
+import lombok.Builder;
 import software.amazon.awssdk.enhanced.dynamodb.mapper.annotations.*;
 
 import java.math.BigDecimal;
 
+@Builder(toBuilder = true)
 @DynamoDbBean
 public class ReporteAprobadosEntity {
 
