@@ -23,15 +23,22 @@ management:
 cors:
   allowed-origins: "http://localhost:4200,http://localhost:8080"
 aws:
-  region: "us-east-2"
+  region: ${AWS_REGION:us-east-2}
   dynamodb:
-    endpoint: "https://dynamodb.us-east-2.amazonaws.com"
+    endpoint: ${DYNAMODB_ENDPOINT:https://dynamodb.us-east-2.amazonaws.com}
 entrypoint:
   sqs:
-    region: "us-east-2"
-    #endpoint: "http://localhost:4566"
-    queueUrl: "https://sqs.us-east-2.amazonaws.com/812612912253/cola-actualizar-reporte-dynamo"
+    region: ${SQS_ENTRYPOINT_REGION:us-east-2}
+    queueUrl: ${UPDATE_REPORT_QUEUE_URL:https://sqs.us-east-2.amazonaws.com/812612912253/cola-actualizar-reporte-dynamo}
     waitTimeSeconds: 20
     maxNumberOfMessages: 10
     visibilityTimeoutSeconds: 10
     numberOfThreads: 1
+adapter:
+  dynamodb:
+    region: ${DYNAMODB_REGION:us-east-2}
+logging:
+  level:
+    software:
+      amazon:
+        awssdk: DEBUG
